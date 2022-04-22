@@ -11,7 +11,7 @@ arrayObjNoProto = new Proxy(arrayObjNoProto, {
 
             return {
                 errDescription: `There is no way to add non-object type data
-                                 or object with prototype to an array..`,
+                                 or object with prototype to an array.`,
             };
         }
 
