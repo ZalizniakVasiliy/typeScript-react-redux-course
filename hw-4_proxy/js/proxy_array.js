@@ -4,6 +4,10 @@ let arrayObjNoProto = [];
 
 arrayObjNoProto = new Proxy(arrayObjNoProto, {
     set(target, prop, value) {
+        
+        if (prop === 'length') {
+            return `some string`;
+        }
 
         if (typeof value !== 'object' || Object.getPrototypeOf(value)) {
             console.warn(`There is no way to add non-object type data
