@@ -18,9 +18,22 @@ arrayObjNoProto = new Proxy(arrayObjNoProto, {
                                  or object with prototype to an array.`,
             };
         }
+        
+        if (typeof value !== "string") {
+            value = JSON.stringify(value);
+        }
 
-        target[prop] = JSON.stringify(value);
+        target[prop] = value;
         return true;
+    },
+    
+    get(target, prop) {
+
+        if (prop in target) {
+            return target[prop];
+        } else {
+            return `There is no such element`;
+        }
     }
 })
 
@@ -44,5 +57,3 @@ arrayObjNoProto.push([0, 1, 2]);
 
 console.log(arrayObjNoProto[0]);
 console.log(arrayObjNoProto);
-
-
